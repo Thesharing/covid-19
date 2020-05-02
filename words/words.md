@@ -2,72 +2,75 @@
     <div>
     	<iframe id="splash" width="960" height="480" src="banners/splash.html"></iframe>
         <div style="top: 70px;font-size: 75px;font-weight: bold;">
-        	What Happens Next?
+        	接下来会发生什么？
        	</div>
 		<div style="font-weight: 500;top: 140px;left: 10px;font-size: 29px;">
-			COVID-19 Futures, Explained With Playable Simulations
+			用交互式模拟动画诠释新型冠状病毒肺炎的特性
 		</div>
 		<div style="font-weight: 100;top: 189px;left: 10px;font-size: 19px;line-height: 21px;">
 			<b>
-				🕐 30 min play/read
+				🕐 总阅读/游戏时长：30分钟
 				&nbsp;&middot;&nbsp;
 			</b>
-			by
+			作者：
 			<a href="https://scholar.google.com/citations?user=_wHMGkUAAAAJ&amp;hl=en">Marcel Salathé</a>
-			(epidemiologist)
+			(流行病学家)
 			&
 			<a href="https://ncase.me/">Nicky Case</a>
-			(art/code)
+			(美术/代码)
 		</div>
 	</div>
 </div>
 
-"The only thing to fear is fear itself" was stupid advice.
 
-Sure, don't hoard toilet paper – but if policymakers fear fear itself, they'll downplay real dangers to avoid "mass panic". Fear's not the problem, it's how we *channel* our fear. Fear gives us energy to deal with dangers now, and prepare for dangers later.
+“唯一值得恐惧的是恐惧本身”这句话本身就是一个愚蠢的建议。
 
-Honestly, we (Marcel, epidemiologist + Nicky, art/code) are worried. We bet you are, too! That's why we've channelled our fear into making these **playable simulations**, so that *you* can channel your fear into understanding:
+当然，囤卫生纸是没什么用的。但是如果政策的制定者担心大众恐惧心理所带来的影响，他们会采取对真实情况避重就轻的方式来避免大规模恐慌的发生。恐惧本身并不可怕，关建在于我们如何面对恐惧。恐惧可以转化为力量以帮助我们处理当前所面临的危机，以及为将来可能发生的危机做好准备。
 
-* **The Last Few Months** (epidemiology 101, SEIR model, R & R<sub>0</sub>)
-* **The Next Few Months** (lockdowns, contact tracing, masks)
-* **The Next Few Years** (loss of immunity? no vaccine?)
+实话实说，我们（Marcel，流行病学家 + Nicky，美术/代码）内心惶惶不安。我们相信你也是。因此我们做了这些**交互式模拟动画**以缓解我们的忧虑，而**你**则可以通过了解以下知识来缓解你的忧虑：
 
-This guide (published May 1st, 2020. click this footnote!→[^timestamp]) is meant to give you hope *and* fear. To beat COVID-19 **in a way that also protects our mental & financial health**, we need optimism to create plans, and pessimism to create backup plans. As Gladys Bronwyn Stern once said, *“The optimist invents the airplane and the pessimist the parachute.”*
+* **过去的几个月** （流行病学基础知识，SEIR传染病动力学模型，有效传染数R和基本传染数R<sub>0</sub>）
+* **接下来的几个月** （出行管制lockdowns，追踪密切接触者，口罩）
+* **接下来的若干年** (免疫力丧失？没有疫苗？)
 
-[^timestamp]: These footnotes will have sources, links, or bonus commentary. Like this commentary!
-    
-    **This guide was published on May 1st, 2020.** Many details will become outdated, but we're confident this guide will cover 95% of possible futures, and that Epidemiology 101 will remain forever useful.
+这篇文章（于2020年5月1日发布，详情见脚注→[^timestamp]）旨在于为你带来希望**以及**忧虑。为了在确保我们精神状态和财产安全免遭影响的前提下击败新冠肺炎疫情，我们需要从乐观主义的角度来制定计划，同时也要从悲观主义的角度制定备用方案。正如格拉迪斯·布朗温说过，“乐观主义者发明了飞机，悲观主义者发明了降落伞”。
 
-So, buckle in: we're about to experience some turbulence.
+[^timestamp]: 在脚注中将标明原文、链接以及额外的注释，就像这条注释一样。
+
+    **这篇文章发表于2020年5月1日。** 很多细节在未来可能会过时，但是我们确信这篇文章能够覆盖95%未来可能发生的情况，并且流行病学基础知识能让你受益终生。
+
+所以，系好安全带，我们前方将遇到强对流天气。
 
 <div class="section chapter">
     <div>
 		<img src="banners/curve.png" height=480 style="position: absolute;"/>
-        <div>The Last Few Months</div>
+        <div>过去的几个月</div>
     </div>
 </div>
 
-Pilots use flight simulators to learn how not to crash planes.
+飞行员通过飞行模拟器去学习如何避免坠机。
 
-**Epidemiologists use epidemic simulators to learn how not to crash humanity.**
+**流行病学家则通过流行病仿真模型去学习如何避免疾病肆虐人间。**
 
-So, let's make a very, *very* simple "epidemic flight simulator"! In this simulation, <icon i></icon> Infectious people can turn <icon s></icon> Susceptible people into more <icon i></icon> Infectious people:
+因此，现在让我们来做一个非常**非常**简单的流行病“飞行模拟器”吧。在这个模拟动画中，<icon i></icon>感染者可以传染易感人群，使其成为新的感染者：
 
 ![](pics/spread.png)
 
-It's estimated that, *at the start* of a COVID-19 outbreak, the virus jumps from an <icon i></icon> to an <icon s></icon> every 4 days, *on average*.[^serial_interval] (remember, there's a lot of variation)
+通过估算可以得知，在新冠肺炎疫情爆发的**前期**，病毒**平均**每4天从一个感染者<icon i></icon>传播到另一个易感者<icon s></icon>身上。[^serial_interval]（值得注意的是，这里存在着许多不确定性）
 
-[^serial_interval]: “The mean [serial] interval was 3.96 days (95% CI 3.53–4.39 days)”. [Du Z, Xu X, Wu Y, Wang L, Cowling BJ, Ancel Meyers L](https://wwwnc.cdc.gov/eid/article/26/6/20-0357_article) (Disclaimer: Early release articles are not considered as final versions)
+[^serial_interval]: “ **连续**间隔的平均值为3.96天 (95% 置信区间：3.53–4.39天)”。 [Du Z, Xu X, Wu Y, Wang L, Cowling BJ, Ancel Meyers L](https://wwwnc.cdc.gov/eid/article/26/6/20-0357_article)（免责声明：早期发行版文章不视为最终版本）
 
-If we simulate "double every 4 days" *and nothing else*, on a population starting with just 0.001% <icon i></icon>, what happens? 
+如果我们假设每四天感染者数量翻倍，同时不考虑其他因素，以总人口比例0.001%为起点开始进行模拟，会发生什么呢？
+
+**点击“开始”按钮运行模拟动画。稍后你可以基于不同参数设定重新运行。**（声明：[^caveats]）
 
 **Click "Start" to play the simulation! You can re-play it later with different settings:** (technical caveats: [^caveats])
 
-[^caveats]: **Remember: all these simulations are super simplified, for educational purposes.**
+[^caveats]: **请牢记：基于教学目的，所有模拟动画都进行了大幅度的简化。**
+
+    其中一处简化为：在模拟动画中，“每X天新增一名感染者”实际上是指每天将感染者的数量增加1/x。在之后的模拟动画中也采取同样的简化。“每X天有一名感染者痊愈”实际上是指每天将感染者的数量减少1/x。
     
-    One simplification: When you tell this simulation "Infect 1 new person every X days", it's actually increasing # of infected by 1/X each day. Same for future settings in these simulations – "Recover every X days" is actually reducing # of infected by 1/X each day.
-    
-    Those *aren't* exactly the same, but it's close enough, and for educational purposes it's less opaque than setting the transmission/recovery rates directly.
+    这实际上与真实情况是不太一样的，但是足够接近了。基于教学目的，这比直接设置传染率/痊愈率要更容易理解一些。
 
 <div class="sim">
 		<iframe src="sim?stage=epi-1" width="800" height="540"></iframe>
@@ -213,7 +216,7 @@ This is because when there are more non-<icon s></icon>s than the herd immunity 
 It's a paradox. COVID-19 is extremely contagious, yet to contain it, we "only" need to stop more than 60% of infections. 60%?! If that was a school grade, that's a D-. But if R<sub>0</sub> = 2.5, cutting that by 61% gives us R = 0.975, which is R < 1, virus is contained! (exact formula:[^exact_formula])
 
 [^exact_formula]: Remember R = R<sub>0</sub> * the ratio of transmissions still allowed. Remember also that ratio of transmissions allowed = 1 - ratio of transmissions *stopped*.
-    
+
     Therefore, to get R < 1, you need to get R<sub>0</sub> * TransmissionsAllowed < 1. 
     
     Therefore, TransmissionsAllowed < 1/R<sub>0</sub>
@@ -273,7 +276,7 @@ Even if only 0.5% of infected die – a generous assumption when there's no more
 The "Flatten The Curve" plan was touted by every public health organization, while the United Kingdom's original "herd immunity" plan was universally booed. They were *the same plan.* The UK just communicated theirs poorly.[^yong]
 
 [^yong]: “He says that the actual goal is the same as that of other countries: flatten the curve by staggering the onset of infections. As a consequence, the nation may achieve herd immunity; it’s a side effect, not an aim. [...] The government’s actual coronavirus action plan, available online, doesn’t mention herd immunity at all.”
-    
+
     From a [The Atlantic article by Ed Yong](https://www.theatlantic.com/health/archive/2020/03/coronavirus-pandemic-herd-immunity-uk-boris-johnson/608065/)
 
 Both plans, though, had a literally fatal flaw.
@@ -367,7 +370,7 @@ But that's exactly it! “A lockdown isn't a cure, it's just a restart”... **a
 To understand how Taiwan & South Korea contained COVID-19, we need to understand the exact timeline of a typical COVID-19 infection[^timeline]:
 
 [^timeline]: **3 days on average to infectiousness:** “Assuming an incubation period distribution of mean 5.2 days from a separate study of early COVID-19 cases, we inferred that infectiousness started from 2.3 days (95% CI, 0.8–3.0 days) before symptom onset” (translation: Assuming symptoms start at 5 days, infectiousness starts 2 days before = Infectiousness starts at 3 days) [He, X., Lau, E.H.Y., Wu, P. et al.](https://www.nature.com/articles/s41591-020-0869-5)  
-    
+
     **4 days on average to infecting someone else:** “The mean [serial] interval was 3.96 days (95% CI 3.53–4.39 days)” [Du Z, Xu X, Wu Y, Wang L, Cowling BJ, Ancel Meyers L](https://wwwnc.cdc.gov/eid/article/26/6/20-0357_article)
     
     **5 days on average to feeling symptoms:** “The median incubation period was estimated to be 5.1 days (95% CI, 4.5 to 5.8 days)” [Lauer SA, Grantz KH, Bi Q, et al](https://annals.org/AIM/FULLARTICLE/2762808/INCUBATION-PERIOD-CORONAVIRUS-DISEASE-2019-COVID-19-FROM-PUBLICLY-REPORTED)
@@ -419,7 +422,7 @@ But what about folks without smartphones? Or infections through doorknobs? Or "t
 (Rant about the confusion about pre-symptomatic vs "true" asymptomatic. "True" asymptomatics are rare:[^rant])
 
 [^rant]: Lots of news reports – and honestly, many research papers – did not distinguish between "cases who showed no symptoms when we tested them" (pre-symptomatic) and "cases who showed no symptoms *ever*" (true asymptomatic). The only way you could tell the difference is by following up with cases later.
-   
+
     Which is what [this study](https://wwwnc.cdc.gov/eid/article/26/8/20-1274_article) did. (Disclaimer: "Early release articles are not considered as final versions.") In a call center in South Korea that had a COVID-19 outbreak, "only 4 (1.9%) remained asymptomatic within 14 days of quarantine, and none of their household contacts acquired secondary infections."
     
     So that means "true asymptomatics" are rare, and catching the disease from a true asymptomatic may be even rarer!
@@ -427,12 +430,12 @@ But what about folks without smartphones? Or infections through doorknobs? Or "t
 Isolating *symptomatic* cases would reduce R by up to 40%, and quarantining their *pre/a-symptomatic* contacts would reduce R by up to 50%[^oxford]:
 
 [^oxford]: From the same Oxford study that first recommended apps to fight COVID-19: [Luca Ferretti & Chris Wymant et al](https://science.sciencemag.org/content/early/2020/04/09/science.abb6936/tab-figures-data) See Figure 2. Assuming R<sub>0</sub> = 2.0, they found that:    
-    
+
     * Symptomatics contribute R = 0.8 (40%)
     * Pre-symptomatics contribute R = 0.9 (45%)
     * Asymptomatics contribute R = 0.1 (5%, though their model has uncertainty and it could be much lower)
     * Environmental stuff like doorknobs contribute R = 0.2 (10%)
-
+    
     And add up the pre- & a-symptomatic contacts (45% + 5%) and you get 50% of R!
 
 <div class="sim">
@@ -515,7 +518,7 @@ Benefit: Even if it's a 50–50 chance of surgical masks reducing transmission b
 [^mask_args]: **"We need to save supplies for hospitals."** *Absolutely agreed.* But that's more of an argument for increasing mask production, not rationing. In the meantime, we can make cloth masks.
 
    **"They're hard to wear correctly."** It's also hard to wash your hands according to the WHO Guidelines – seriously, "Step 3) right palm over left dorsum"?! – but we still recommend handwashing, because imperfect is still better than nothing.
-   
+
    **"It'll make people more reckless with handwashing & social distancing."** Sure, and safety belts make people ignore stop signs, and flossing makes people eat rocks. But seriously, we'd argue the opposite: masks are a *constant physical reminder* to be careful – and in East Asia, masks are also a symbol of solidarity!
     
     
