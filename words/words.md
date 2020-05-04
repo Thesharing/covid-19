@@ -33,7 +33,7 @@
 * **接下来的几个月** （出行管制lockdowns，追踪密切接触者，口罩）
 * **接下来的若干年** (免疫力丧失？没有疫苗？)
 
-这篇文章（于2020年5月1日发布，详情见脚注→[^timestamp]）旨在于为你带来希望**以及**忧虑。为了在确保我们精神状态和财产安全免遭影响的前提下击败新冠肺炎疫情，我们需要从乐观主义的角度来制定计划，同时也要从悲观主义的角度制定备用方案。正如格拉迪斯·布朗温说过，“乐观主义者发明了飞机，悲观主义者发明了降落伞”。
+这篇文章（于2020年5月1日发布，详情见脚注→[^timestamp]）旨在于为你带来希望**以及**忧虑。为了击败新冠肺炎疫情，同时确保我们精神状态和财产安全不受影响，我们不仅需要基于乐观主义的角度制定计划，同时还要基于悲观主义的角度制定备用方案。正如格拉迪斯·布朗温说过，“乐观主义者发明了飞机，悲观主义者发明了降落伞”。
 
 [^timestamp]: 在脚注中将标明原文、链接以及额外的注释，就像这条注释一样。
 
@@ -52,7 +52,7 @@
 
 **流行病学家则通过流行病仿真模型去学习如何避免疾病肆虐人间。**
 
-因此，现在让我们来做一个非常**非常**简单的流行病“飞行模拟器”吧。在这个模拟动画中，<icon i></icon>感染者可以传染易感人群，使其成为新的感染者：
+因此，现在让我们来做一个非常**非常**简单的流行病“飞行模拟器”吧。在这个模拟动画中，<icon i></icon>感染者可以传染<icon s></icon>易感人群，使其成为新的<icon i></icon>感染者：
 
 ![](pics/spread.png)
 
@@ -64,8 +64,6 @@
 
 **点击“开始”按钮运行模拟动画。稍后你可以基于不同参数设定重新运行。**（声明：[^caveats]）
 
-**Click "Start" to play the simulation! You can re-play it later with different settings:** (technical caveats: [^caveats])
-
 [^caveats]: **请牢记：基于教学目的，所有模拟动画都进行了大幅度的简化。**
 
     其中一处简化为：在模拟动画中，“每X天新增一名感染者”实际上是指每天将感染者的数量增加1/x。在之后的模拟动画中也采取同样的简化。“每X天有一名感染者痊愈”实际上是指每天将感染者的数量减少1/x。
@@ -76,43 +74,43 @@
 		<iframe src="sim?stage=epi-1" width="800" height="540"></iframe>
 </div>
 
-This is the **exponential growth curve.** Starts small, then explodes. "Oh it's just a flu" to "Oh right, flus don't create *mass graves in rich cities*". 
+这就是**指数增长曲线**。刚开始数量很少，随后爆炸性增长。从“哦，这只是流感而已”到“这可不对，流感可不会导致这么多人丧命”。
 
 ![](pics/exponential.png)
 
-But, this simulation is wrong. Exponential growth, thankfully, can't go on forever. One thing that stops a virus from spreading is if others *already* have the virus:
+但是，这样模拟是错误的。值得庆幸的是，指数增长不会无穷无尽。如果其他人已经感染过病毒，那么病毒就不会再继续传播了。
 
 ![](pics/susceptibles.png)
 
-The more <icon i></icon>s there are, the faster <icon s></icon>s become <icon i></icon>s, **but the fewer <icon s></icon>s there are, the *slower* <icon s></icon>s become <icon i></icon>s.**
+感染者<icon i></icon>越多，易感者<icon s></icon>被传染为感染者<icon i></icon>的速度就越快。**但是当易感者<icon s></icon>数量越少，易感者<icon s></icon>被传染为感染者<icon i></icon>的速度就越慢。**
 
-How's this change the growth of an epidemic? Let's find out:
+这会如何改变疫情增长趋势呢？让我们一探究竟：
 
 <div class="sim">
 		<iframe src="sim?stage=epi-2" width="800" height="540"></iframe>
 </div>
 
-This is the "S-shaped" **logistic growth curve.** Starts small, explodes, then slows down again.
+这就是逻辑增长曲线（Logistic Growth Curve），又称S型曲线。刚开始数量很少，然后数量剧增，接着增长逐渐缓慢。
 
-But, this simulation is *still* wrong. We're missing the fact that <icon i></icon> Infectious people eventually stop being infectious, either by 1) recovering, 2) "recovering" with lung damage, or 3) dying.
+但是，这样模拟**仍旧**是错误的。我们忽略了一个事实：感染者 <icon i></icon>最终不会再感染病毒。无论是（1）治愈（2）“治愈”，但是肺功能受损，还是（3）不幸病逝。
 
-For simplicity's sake, let's pretend that all <icon i></icon> Infectious people become <icon r></icon> Recovered. (Just remember that in reality, some are dead.) <icon r></icon>s can't be infected again, and let's pretend – *for now!* – that they stay immune for life.
+为了简单起见，让我们假设所有感染者<icon i></icon>都会被治愈，成为康复人群<icon r></icon>。（但是要记住现实生活中还是会有一部分人不幸病逝。）康复人群<icon r></icon>不会再次被感染，并且让我们在这里**暂时**假设他们会获得终生免疫。
 
-With COVID-19, it's estimated you're <icon i></icon> Infectious for 10 days, *on average*.[^infectiousness] That means some folks will recover before 10 days, some after. **Here's what that looks like, with a simulation *starting* with 100% <icon i></icon>:**
+对于新冠肺炎患者，感染者<icon i></icon>的**平均**痊愈时间为10天。[^infectiousness]也就是说一些人会在10天之内就痊愈，而一些人会花更长的时间才能痊愈。**在接下来的这个模拟动画中，一开始所有人都是感染者<icon i></icon>：**
 
-[^infectiousness]: “The median communicable period \[...\] was 9.5 days.” [Hu, Z., Song, C., Xu, C. et al](https://link.springer.com/article/10.1007/s11427-020-1661-4) Yes, we know "median" is not the same as "average". For simplified educational purposes, close enough.
+[^infectiousness]: “患者具有传染性的时间其中位数……为9.5天。” [Hu, Z., Song, C., Xu, C. et al](https://link.springer.com/article/10.1007/s11427-020-1661-4) 是的，我们知道“中位数”与“平均数”并不是同一个概念，但是鉴于本文只是为了简要阐明原理，从这一角度来说二者已经足够接近了。
 
 <div class="sim">
 		<iframe src="sim?stage=epi-3" width="800" height="540"></iframe>
 </div>
 
-This is the opposite of exponential growth, the **exponential decay curve.**
+与指数增长相反，这是“指数下降曲线”。
 
-Now, what happens if you simulate S-shaped logistic growth *with* recovery?
+此时，如果你尝试用S型逻辑增长曲线来模拟痊愈的过程呢？
 
 ![](pics/graphs_q.png)
 
-Let's find out.
+让我们一探究竟。
 
 <b style='color:#ff4040'>Red curve</b> is *current* cases <icon i></icon>,    
 <b style='color:#999999'>Gray curve</b> is *total* cases (current + recovered <icon r></icon>),
