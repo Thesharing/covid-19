@@ -2,9 +2,11 @@
     <div>
     	<iframe id="splash" width="960" height="480" src="banners/splash.html"></iframe>
         <div style="top: 70px;font-size: 75px;font-weight: bold;">
-        	接下来会发生什么？
+			What Happens Next?
+			接下来会发生什么？
        	</div>
 		<div style="font-weight: 500;top: 140px;left: 10px;font-size: 29px;">
+			COVID-19 Futures, Explained With Playable Simulations
 			用交互式模拟动画诠释新型冠状病毒肺炎的特性
 		</div>
 		<div style="font-weight: 100;top: 189px;left: 10px;font-size: 19px;line-height: 21px;">
@@ -22,51 +24,88 @@
 	</div>
 </div>
 
+"The only thing to fear is fear itself" was stupid advice.
 
 “唯一值得恐惧的是恐惧本身”这句话本身就是一个愚蠢的建议。
 
+Sure, don't hoard toilet paper – but if policymakers fear fear itself, they'll downplay real dangers to avoid "mass panic". Fear's not the problem, it's how we *channel* our fear. Fear gives us energy to deal with dangers now, and prepare for dangers later.
+
 当然，囤卫生纸是没什么用的。但是如果政策的制定者担心大众恐惧心理所带来的影响，他们会采取对真实情况避重就轻的方式来避免大规模恐慌的发生。恐惧本身并不可怕，关建在于我们如何面对恐惧。恐惧可以转化为力量以帮助我们处理当前所面临的危机，以及为将来可能发生的危机做好准备。
+
+Honestly, we (Marcel, epidemiologist + Nicky, art/code) are worried. We bet you are, too! That's why we've channelled our fear into making these **playable simulations**, so that *you* can channel your fear into understanding:
 
 实话实说，我们（Marcel，流行病学家 + Nicky，美术/代码）内心惶惶不安。我们相信你也是。因此我们做了这些**交互式模拟动画**以缓解我们的忧虑，而**你**则可以通过了解以下知识来缓解你的忧虑：
 
+* **The Last Few Months** (epidemiology 101, SEIR model, R & R<sub>0</sub>)
+* **The Next Few Months** (lockdowns, contact tracing, masks)
+* **The Next Few Years** (loss of immunity? no vaccine?)
+
 * **过去的几个月** （流行病学基础知识，SEIR传染病动力学模型，有效传染数R和基本传染数R<sub>0</sub>）
-* **接下来的几个月** （出行管制lockdowns，追踪密切接触者，口罩）
+* **接下来的几个月** （出行管制，追踪密切接触者，口罩）
 * **接下来的若干年** (免疫力丧失？没有疫苗？)
+
+This guide (published May 1st, 2020. click this footnote!→[^timestamp]) is meant to give you hope *and* fear. To beat COVID-19 **in a way that also protects our mental & financial health**, we need optimism to create plans, and pessimism to create backup plans. As Gladys Bronwyn Stern once said, *“The optimist invents the airplane and the pessimist the parachute.”*
 
 这篇文章（于2020年5月1日发布，详情见脚注→[^timestamp]）旨在于为你带来希望**以及**忧虑。为了击败新冠肺炎疫情，同时确保我们精神状态和财产安全不受影响，我们不仅需要从乐观主义的角度制定计划，同时还要站在悲观主义的角度去制定备用方案。正如格拉迪斯·布朗温说过，“乐观主义者发明了飞机，悲观主义者发明了降落伞”。
 
 [^timestamp]: 在脚注中将标明原文、链接以及额外的注释，就像这条注释一样。
 
+	These footnotes will have sources, links, or bonus commentary. Like this commentary!
+
+	**This guide was published on May 1st, 2020.** Many details will become outdated, but we're confident this guide will cover 95% of possible futures, and that Epidemiology 101 will remain forever useful.
+
     **这篇文章发表于2020年5月1日。** 很多细节在未来可能会过时，但是我们确信这篇文章能够覆盖95%未来可能发生的情况，并且流行病学基础知识能让你受益终生。
+
+So, buckle in: we're about to experience some turbulence.
 
 所以，系好安全带，我们前方将进入强对流天气。
 
 <div class="section chapter">
     <div>
 		<img src="banners/curve.png" height=480 style="position: absolute;"/>
-        <div>过去的几个月</div>
+        <div>过去的几个月 The Last Few Months</div>
     </div>
 </div>
 
+Pilots use flight simulators to learn how not to crash planes.
+
 飞行员通过飞行模拟器去学习如何避免坠机。
 
+**Epidemiologists use epidemic simulators to learn how not to crash humanity.**
+
 **流行病学家则通过流行病仿真模型去学习如何避免疾病肆虐人间。**
+
+So, let's make a very, *very* simple "epidemic flight simulator"! In this simulation, <icon i></icon> Infectious people can turn <icon s></icon> Susceptible people into more <icon i></icon> Infectious people:
 
 因此，现在让我们来做一个非常**非常**简单的流行病“飞行模拟器”吧。在这个模拟动画中，<icon i></icon>感染者可以传染<icon s></icon>易感人群，使其成为新的<icon i></icon>感染者：
 
 ![](pics/spread.png)
 
+It's estimated that, *at the start* of a COVID-19 outbreak, the virus jumps from an <icon i></icon> to an <icon s></icon> every 4 days, *on average*.[^serial_interval] (remember, there's a lot of variation)
+
 通过估算可以得知，在新冠肺炎疫情爆发的**前期**，病毒**平均**每4天从一个感染者<icon i></icon>传播到另一个易感者<icon s></icon>身上。[^serial_interval]（值得注意的是，其中存在着许多不确定性）
 
-[^serial_interval]: “ **连续**间隔的平均值为3.96天 (95% 置信区间：3.53–4.39天)”。 [Du Z, Xu X, Wu Y, Wang L, Cowling BJ, Ancel Meyers L](https://wwwnc.cdc.gov/eid/article/26/6/20-0357_article)（免责声明：早期发行版文章不视为最终版本）
+[^serial_interval]: “The mean [serial] interval was 3.96 days (95% CI 3.53–4.39 days)”. [Du Z, Xu X, Wu Y, Wang L, Cowling BJ, Ancel Meyers L](https://wwwnc.cdc.gov/eid/article/26/6/20-0357_article) (Disclaimer: Early release articles are not considered as final versions) 
+
+“**连续**间隔的平均值为3.96天 (95% 置信区间：3.53–4.39天)”。 [Du Z, Xu X, Wu Y, Wang L, Cowling BJ, Ancel Meyers L](https://wwwnc.cdc.gov/eid/article/26/6/20-0357_article)（免责声明：早期发行版文章不视为最终版本）
+
+If we simulate "double every 4 days" *and nothing else*, on a population starting with just 0.001% <span class="nowrap"><icon i></icon>,</span> what happens? 
 
 如果我们假设每四天感染者数量翻倍，同时不考虑其他因素，以总人口<span class="nowrap"><icon i></icon></span>比例0.001%为起点开始进行模拟，会发生什么呢？
+
+**Click "Start" to play the simulation! You can re-play it later with different settings:** (technical caveats: [^caveats])
 
 **点击“开始”按钮运行模拟动画。稍后你可以基于不同参数设定重新运行。**（声明：[^caveats]）
 
 [^caveats]: **请牢记：基于教学目的，所有模拟动画都进行了大幅度的简化。**
 
+	**Remember: all these simulations are super simplified, for educational purposes.**
+
+	One simplification: When you tell this simulation "Infect 1 new person every X days", it's actually increasing # of infected by 1/X each day. Same for future settings in these simulations – "Recover every X days" is actually reducing # of infected by 1/X each day.
+
     其中一处简化为：在模拟动画中，“每X天新增一名感染者”实际上是指每天将感染者的数量增加1/x。在之后的模拟动画中也采取同样的简化。“每X天有一名感染者痊愈”实际上是指每天将感染者的数量减少1/x。
+
+	Those *aren't* exactly the same, but it's close enough, and for educational purposes it's less opaque than setting the transmission/recovery rates directly.
     
     这实际上与真实情况是不太一样的，但是足够接近了。基于教学目的，这比直接设置传染率/痊愈率要更容易理解一些。
 
@@ -74,15 +113,23 @@
 		<iframe src="sim?stage=epi-1" width="800" height="540"></iframe>
 </div>
 
+This is the **exponential growth curve.** Starts small, then explodes. "Oh it's just a flu" to "Oh right, flus don't create *mass graves in rich cities*". 
+
 这就是**指数增长曲线**。刚开始数量很少，随后爆炸性增长。从“哦，这只是流感而已”到“这可不对，流感可不会导致这么多人丧命”。
 
 ![](pics/exponential.png)
+
+But, this simulation is wrong. Exponential growth, thankfully, can't go on forever. One thing that stops a virus from spreading is if others *already* have the virus:
 
 但是，这样模拟是错误的。值得庆幸的是，指数增长不会无穷无尽。如果其他人已经感染过病毒，那么病毒就不会再继续传播了。
 
 ![](pics/susceptibles.png)
 
+The more <span class="nowrap"><icon i></icon>s</span> there are, the faster <span class="nowrap"><icon s></icon>s</span> become <span class="nowrap"><icon i></icon>s,</span> **but the fewer <span class="nowrap"><icon s></icon>s</span> there are, the *slower* <span class="nowrap"><icon s></icon>s</span> become <span class="nowrap"><icon i></icon>s.</span>**
+
 感染者<span class="nowrap"><icon i></icon></span>越多，易感者<span class="nowrap"><icon s></icon></span>被传染为感染者<span class="nowrap"><icon i></icon></span>的速度就越快。**但是当易感者<span class="nowrap"><icon s></icon></span>数量越少，易感者<span class="nowrap"><icon s></icon></span>被传染为感染者<span class="nowrap"><icon i></icon></span>的速度就越慢。**
+
+How's this change the growth of an epidemic? Let's find out:
 
 这会如何改变疫情增长趋势呢？让我们一探究竟：
 
@@ -90,25 +137,41 @@
 		<iframe src="sim?stage=epi-2" width="800" height="540"></iframe>
 </div>
 
+This is the "S-shaped" **logistic growth curve.** Starts small, explodes, then slows down again.
+
 这就是逻辑增长曲线（Logistic Growth Curve），又称S型曲线。刚开始数量很少，然后数量剧增，接着增长逐渐放缓。
+
+But, this simulation is *still* wrong. We're missing the fact that <icon i></icon> Infectious people eventually stop being infectious, either by 1) recovering, 2) "recovering" with lung damage, or 3) dying.
 
 但是，这样模拟**仍旧**是错误的。我们忽略了一个事实：感染者 <icon i></icon>最终不会再感染病毒。无论是（1）治愈（2）“治愈”，但是肺功能受损，还是（3）不幸病逝。
 
+For simplicity's sake, let's pretend that all <icon i></icon> Infectious people become <icon r></icon> Recovered. (Just remember that in reality, some are dead.) <span class="nowrap"><icon r></icon>s</span> can't be infected again, and let's pretend – *for now!* – that they stay immune for life.
+
 为了简单起见，让我们假设所有感染者<icon i></icon>都会被治愈，成为康复人群<icon r></icon>。（但是要记住现实生活中还是会有一部分人不幸病逝。）康复人群<span class="nowrap"><icon r></icon></span>不会再次被感染，并且让我们在这里**暂时**假设他们会获得终生免疫。
+
+With COVID-19, it's estimated you're <icon i></icon> Infectious for 10 days, *on average*.[^infectiousness] That means some folks will recover before 10 days, some after. **Here's what that looks like, with a simulation *starting* with 100% <span class="nowrap"><icon i></icon>:</span>**
 
 对于新冠肺炎患者，感染者<icon i></icon>的**平均**痊愈时间为10天。[^infectiousness]也就是说一些人会在10天之内就痊愈，而一些人则需要花更长的时间才能痊愈。**在接下来的这个模拟动画中，一开始所有人都是感染者<span class="nowrap"><icon i></icon></span>：**
 
-[^infectiousness]: “患者具有传染性的时间其中位数……为9.5天。” [Hu, Z., Song, C., Xu, C. et al](https://link.springer.com/article/10.1007/s11427-020-1661-4) 是的，我们知道“中位数”与“平均数”并不是同一个概念，但是鉴于本文只是为了简要阐明原理，从这一角度来说二者已经足够接近了。
+[^infectiousness]: “The median communicable period \[...\] was 9.5 days.” [Hu, Z., Song, C., Xu, C. et al](https://link.springer.com/article/10.1007/s11427-020-1661-4) Yes, we know "median" is not the same as "average". For simplified educational purposes, close enough.
+
+“患者具有传染性的时间其中位数……为9.5天。” [Hu, Z., Song, C., Xu, C. et al](https://link.springer.com/article/10.1007/s11427-020-1661-4) 是的，我们知道“中位数”与“平均数”并不是同一个概念，但是鉴于本文只是为了简要阐明原理，从这一角度来说二者已经足够接近了。
 
 <div class="sim">
 		<iframe src="sim?stage=epi-3" width="800" height="540"></iframe>
 </div>
 
+This is the opposite of exponential growth, the **exponential decay curve.**
+
 与指数增长相反，这是“指数下降曲线”。
+
+Now, what happens if you simulate S-shaped logistic growth *with* recovery?
 
 此时，如果你尝试用S型逻辑增长曲线来模拟痊愈的过程呢？
 
 ![](pics/graphs_q.png)
+
+Let's find out.
 
 让我们一探究竟。
 
