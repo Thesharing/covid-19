@@ -41,7 +41,7 @@ Honestly, we (Marcel, epidemiologist + Nicky, art/code) are worried. We bet you 
 * **The Next Few Years** (loss of immunity? no vaccine?)
 
 * **过去的几个月** （流行病学基础知识，SEIR传染病动力学模型，有效传染数R和基本传染数R<sub>0</sub>）
-* **接下来的几个月** （出行管制，追踪密切接触者，口罩）
+* **接下来的几个月** （居家不外出，追踪密切接触者，口罩）
 * **接下来的若干年** (免疫力丧失？没有疫苗？)
 
 This guide (published May 1st, 2020. click this footnote!→[^timestamp]) is meant to give you hope *and* fear. To beat COVID-19 **in a way that also protects our mental & financial health**, we need optimism to create plans, and pessimism to create backup plans. As Gladys Bronwyn Stern once said, *“The optimist invents the airplane and the pessimist the parachute.”*
@@ -179,36 +179,65 @@ Let's find out.
 <b style='color:#999999'>Gray curve</b> is *total* cases (current + recovered <span class="nowrap"><icon r></icon>),</span>
 starts at just 0.001% <span class="nowrap"><icon i></icon>:</span>
 
+<b style='color:#ff4040'>红色曲线</b> 为**当前**病例数 <span class="nowrap"><icon i></icon>，</span>    
+<b style='color:#999999'>灰色曲线</b> 为**总**病例数（当前病例数 + 已痊愈病例数 <span class="nowrap"><icon r></icon>），</span>
+其中当前病例数<icon i></icon>的初始值 <span class="nowrap">为0.001%：</span>
+
 <div class="sim">
 		<iframe src="sim?stage=epi-4" width="800" height="540"></iframe>
 </div>
 
 And *that's* where that famous curve comes from! It's not a bell curve, it's not even a "log-normal" curve. It has no name. But you've seen it a zillion times, and beseeched to flatten.
 
+这里我们就得到了一条非常知名的曲线。这条曲线不是钟形曲线，甚至连对数正态曲线都不是。这条曲线没有具体名称。但是你已经无数次见过它，并且每一次它都会趋于平稳。
+
 This is the the **SIR Model**,[^sir]    
 (<icon s></icon>**S**usceptible <icon i></icon>**I**nfectious <icon r></icon>**R**ecovered)      
 the *second*-most important idea in Epidemiology 101:
 
+这就是SIR传染病动力学模型。[^sir]
+其中，SIR分别代指<icon s></icon>易感者（**S**usceptible），<icon i></icon>感染者（**I**nfectious）和<icon r></icon>康复者（**R**ecovered）。
+在流行病学基础中第二重要的一点：
+
 [^sir]: For more technical explanations of the SIR Model, see [the Institute for Disease Modeling](https://www.idmod.org/docs/hiv/model-sir.html#) and [Wikipedia](https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology#The_SIR_model)
+
+想要了解更多关于SIR传染病动力学模型的知识，请查看[the Institute for Disease Modeling](https://www.idmod.org/docs/hiv/model-sir.html#)以及[Wikipedia](https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology#The_SIR_model)。
 
 ![](pics/sir.png)
 
 **NOTE: The simulations that inform policy are way, *way* more sophisticated than this!** But the SIR Model can still explain the same general findings, even if missing the nuances.
 
+**注意**：为政策提供依据的模拟模型会比这个模型要**更复杂**的多。但是SIR模型依旧能够用于阐述流行病学基础理论，即便它缺失了一些细节。
+
 Actually, let's add one more nuance: before an <icon s></icon> becomes an <span class="nowrap"><icon i></icon>,</span> they first become <icon e></icon> Exposed. This is when they have the virus but can't pass it on yet – infect*ed* but not yet infect*ious*.
+
+事实上，让我们再添上一个细节：在易感者<icon s></icon>受到感染成为感染者<icon i></icon>之前，他们首先进入<icon e></icon>潜伏期。这就解释了为什么他们虽然携带病毒，但是无法传播病毒——他们只是受到了病毒感染进入潜伏期，但是还没有完全患病。
 
 ![](pics/seir.png)
 
 (This variant is called the **SEIR Model**[^seir], where the "E" stands for <icon e></icon> "Exposed". Note this *isn't* the everyday meaning of "exposed", when you may or may not have the virus. In this technical definition, "Exposed" means you definitely have it. Science terminology is bad.)
 
+（这一变种被称为**SEIR传染病动力学模型**[^seir]，其中E（Exposed）是指<icon e></icon>潜伏者。潜伏者并非我们日常所说的“潜伏”，而是指携带病毒并处于潜伏期。）
+
 [^seir]: For more technical explanations of the SEIR Model, see [the Institute for Disease Modeling](https://www.idmod.org/docs/hiv/model-seir.html) and [Wikipedia](https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology#The_SEIR_model)
+
+想要了解关于SEIR模型的更多细节，请参考 [the Institute for Disease Modeling](https://www.idmod.org/docs/hiv/model-seir.html) 以及 [Wikipedia](https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology#The_SEIR_model)。
 
 For COVID-19, it's estimated that you're <icon e></icon> infected-but-not-yet-infectious for 3 days, *on average*.[^latent] What happens if we add that to the simulation?
 
+对于新冠肺炎，从<icon e></icon>被感染到具有感染性大概**平均**需要3天。[^latent]如果我们将这个因素添加到模拟动画中会发生什么呢？
+
 [^latent]: “Assuming an incubation period distribution of mean 5.2 days from a separate study of early COVID-19 cases, we inferred that infectiousness started from 2.3 days (95% CI, 0.8–3.0 days) before symptom onset” (translation: Assuming symptoms start at 5 days, infectiousness starts 2 days before = Infectiousness starts at 3 days) [He, X., Lau, E.H.Y., Wu, P. et al.](https://www.nature.com/articles/s41591-020-0869-5)
+
+
+[^latent]: “假设从单独的早期COVID-19病例研究中得出的潜伏期平均为5.2天，我们就可以推断出感染性是从症状发作之前的2.3天开始（95％置信区间：0.8-3.0天）”（假设症状在被感染5天后开始出现，在症状出现的2天前开始具有传染性，等同于在被感染的第3天开始具有传染性）[He, X., Lau, E.H.Y., Wu, P. et al.](https://www.nature.com/articles/s41591-020-0869-5)
 
 <b style='color:#ff4040'>Red <b style='color:#FF9393'>+ Pink</b> curve</b> is *current* cases (infectious <icon i></icon> + exposed <span class="nowrap"><icon e></icon>),</span>    
 <b style='color:#888'>Gray curve</b> is *total* cases (current + recovered <span class="nowrap"><icon r></icon>):</span>
+
+<b style='color:#ff4040'>红色 <b style='color:#FF9393'>+ 粉色</b>曲线</b>为**当前**病例数（感染者<icon i></icon>+潜伏者<span class="nowrap"><icon e></icon>）</span>
+<b style='color:#888'>灰色曲线</b>为总病例数（当前病例数+痊愈病例数<span class="nowrap"><icon r></icon>）：</span>
+
 
 <div class="sim">
 		<iframe src="sim?stage=epi-5" width="800" height="540"></iframe>
@@ -216,35 +245,63 @@ For COVID-19, it's estimated that you're <icon e></icon> infected-but-not-yet-in
 
 Not much changes! How long you stay <icon e></icon> Exposed changes the ratio of <span class="nowrap"><icon e></icon>-to-<icon i></icon>,</span> and *when* current cases peak... but the *height* of that peak, and total cases in the end, stays the same.
 
+没有太大的变化!潜伏期<icon e></icon>的长度变化只会改变从潜伏者<icon e></icon>到感染者<icon i></icon>的比例，以及当前病例数到达峰值的时间……但是峰值的**大小**和总病例数是不变的。
+
 Why's that? Because of the *first*-most important idea in Epidemiology 101:
+
+为什么会这样？因为在流行病学基础中最重要的一点在于：
 
 ![](pics/r.png)
 
 Short for "Reproduction number". It's the *average* number of people an <icon i></icon> infects *before* they recover (or die).
 
+**R**为有效传染数（Reproduction number）的缩写。它是指感染者在痊愈（或者病逝）之前能够感染的人数的**平均值**。
+
 ![](pics/r2.png)
 
 **R** changes over the course of an outbreak, as we get more immunity & interventions.
 
+随着我们获得免疫并且开始进行人为干预，**R**值在疫情爆发的过程中会发生变化。
+
 **R<sub>0</sub>** (pronounced R-nought) is what R is *at the start of an outbreak, before immunity or interventions*. R<sub>0</sub> more closely reflects the power of the virus itself, but it still changes from place to place. For example, R<sub>0</sub> is higher in dense cities than sparse rural areas.
+
+基本传染数**R<sub>0</sub>**（发音为R-nought）为疫情爆发开始时的R值，此时没有任何免疫或者人为干预。R<sub>0</sub>值基本上反映了病毒自身的威力，但是不同地方的R<sub>0</sub>也会不同。举例来说，在人口密集的城市其R<sub>0</sub>值要大于人口稀疏的乡村地区。
 
 (Most news articles – and even some research papers! – confuse R and R<sub>0</sub>. Again, science terminology is bad)
 
+（大多数新闻文章，甚至连一些学术论文都把R和R<sub>0</sub>搞混了。科学术语有的时候会适得其反。）
+
 The R<sub>0</sub> for "the" seasonal flu is around 1.28[^r0_flu]. This means, at the *start* of a flu outbreak, each <icon i></icon> infects 1.28 others *on average.* (If it sounds weird that this isn't a whole number, remember that the "average" mom has 2.4 children. This doesn't mean there's half-children running about.)
+
+季节性流感的R<sub>0</sub>值大约为1.28[^r0_flu]。这也就是说，在流感爆发的起始，每一个感染者<icon i></icon>**平均**能够感染1.28个人。（如果你觉得人数不是整数会让你感到困扰，请记住平均每一个妈妈都有2.4个孩子，这并不是指她们会有半个孩子。）
 
 [^r0_flu]: “The median R value for seasonal influenza was 1.28 (IQR: 1.19–1.37)” [Biggerstaff, M., Cauchemez, S., Reed, C. et al.](https://bmcinfectdis.biomedcentral.com/articles/10.1186/1471-2334-14-480)
 
+"季节性流感的R值中位数为1.28（四分位距：1.19-1.37）" [Biggerstaff, M., Cauchemez, S., Reed, C. et al.](https://bmcinfectdis.biomedcentral.com/articles/10.1186/1471-2334-14-480)
+
 The R<sub>0</sub> for COVID-19 is estimated to be around 2.2,[^r0_covid] though one *not-yet-finalized* study estimates it was 5.7(!) in Wuhan.[^r0_wuhan]
+
+新冠肺炎的R<sub>0</sub>值大约为2.2，[^r0_covid]虽然说有一个尚未完成的研究课题认为在武汉R<sub>0</sub>值大约为5.7（！）。[^r0_wuhan]
 
 [^r0_covid]: “We estimated the basic reproduction number R0 of 2019-nCoV to be around 2.2 (90% high density interval: 1.4–3.8)” [Riou J, Althaus CL.](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7001239/)
 
+“我们估测2019-nCoV的基本传染数大概在2.2左右（90%高密度区间：1.4-3.8）” [Riou J, Althaus CL.](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7001239/)
+
 [^r0_wuhan]: “we calculated a median R0 value of 5.7 (95% CI 3.8–8.9)” [Sanche S, Lin YT, Xu C, Romero-Severson E, Hengartner N, Ke R.](https://wwwnc.cdc.gov/eid/article/26/7/20-0282_article)
+
+“我们计算得到R0值的中位数为5.7（95%置信区间：3.8-8.9）”[Sanche S, Lin YT, Xu C, Romero-Severson E, Hengartner N, Ke R.](https://wwwnc.cdc.gov/eid/article/26/7/20-0282_article)
 
 In our simulations – *at the start & on average* – an <icon i></icon> infects someone every 4 days, over 10 days. "4 days" goes into "10 days" two-and-a-half times. This means – *at the start & on average* – each <icon i></icon> infects 2.5 others. Therefore, R<sub>0</sub> = 2.5. (caveats:[^r0_caveats_sim])
 
+在我们的模拟动画中——无论是在一开始或者是平均值——每一个感染者<icon i></icon>每四天会感染另一个人，这一过程持续10天。“10天”是“4天”的2.5倍。有也就是说，无论是在一开始亦或是平均值，每一个感染者会感染2.5个人。因此，R<sub>0</sub> = 2.5。(声明：[^r0_caveats_sim])
+
 [^r0_caveats_sim]: This is pretending that you're equally infectious all throughout your "infectious period". Again, simplifications for educational purposes.
 
+这里假设在整个患病过程中感染者的感染性是一直保持不变的。同样这里是为了简化。
+
 **Play with this R<sub>0</sub> calculator, to see how R<sub>0</sub> depends on recovery time & new-infection time:**
+
+**运行这个R<sub>0</sub>计算器，看看R<sub>0</sub>是如何随着痊愈天数和新感染者患病天数的变化而变化的：**
 
 <div class="sim">
 		<iframe src="sim?stage=epi-6a&format=calc" width="285" height="255"></iframe>
@@ -252,13 +309,19 @@ In our simulations – *at the start & on average* – an <icon i></icon> infect
 
 But remember, the fewer <span class="nowrap"><icon s></icon>s</span> there are, the *slower* <span class="nowrap"><icon s></icon>s</span> become <span class="nowrap"><icon i></icon>s.</span> The *current* reproduction number (R) depends not just on the *basic* reproduction number (R<sub>0</sub>), but *also* on how many people are no longer <icon s></icon> Susceptible. (For example, by recovering & getting natural immunity.)
 
+但是要记住，易感者<icon s></icon>越少，易感者<icon s></icon>被传染成为感染者<icon i></icon>的速度就越慢。**当前**有效传染数（R）不仅取决于基本传染数（R<sub>0</sub>），同时还取决于不会再被感染的人的数量。（比如说患病后痊愈并且获得免疫。）
+
 <div class="sim">
 		<iframe src="sim?stage=epi-6b&format=calc" width="285" height="390"></iframe>
 </div>
 
 When enough people have immunity, R < 1, and the virus is contained! This is called **herd immunity**. For flus, herd immunity is achieved *with a vaccine*. Trying to achieve "natural herd immunity" by letting folks get infected is a *terrible* idea. (But not for the reason you may think! We'll explain later.)
 
+当足够多的人具有免疫后，R < 1，病毒就会被遏制住！这就是**群体免疫**。对于流感，群体免疫可以靠**疫苗**来实现。而尝试通过让所有市民被感染以达到群体免疫，是一个非常**糟糕**的主意。（但是可能与你所认为的理由不同！我们稍后会解释。）
+
 Now, let's play the SEIR Model again, but showing R<sub>0</sub>, R over time, and the herd immunity threshold:
+
+现在，让我们再模拟一次SEIR模型，但是这次会展示R<sub>0</sub>值，随着时间变化的R值以及达到群体免疫的阈值：
 
 <div class="sim">
 		<iframe src="sim?stage=epi-7" width="800" height="540"></iframe>
@@ -266,15 +329,25 @@ Now, let's play the SEIR Model again, but showing R<sub>0</sub>, R over time, an
 
 **NOTE: Total cases *does not stop* at herd immunity, but overshoots it!** And it crosses the threshold *exactly* when current cases peak. (This happens no matter how you change the settings – try it for yourself!)
 
+**注意：总病例数不会因为群体免疫而停止增长，它会超过阈值！**并且它正好在当前病例数达到峰值时超过阈值。（无论你怎么修改参数都是如此，你可以自己试一试！）
+
 This is because when there are more <span class="nowrap">non-<icon s></icon>s</span> than the herd immunity threshold, you get R < 1. And when R < 1, new cases stop growing: a peak.
 
+这是因为当不会再被感染的人的数量大于群体免疫的阈值时，R < 1。当R < 1时，当前病例数就会停止增长：这就达到峰值了。
+
 **If there's only one lesson you take away from this guide, here it is** – it's an extremely complex diagram so please take time to fully absorb it:
+
+**这就是你在这篇文章中最应当学到的知识。**这是一张非常复杂的图，请多花一点时间去充分理解它。
 
 ![](pics/r3.png)
 
 **This means: we do NOT need to catch all transmissions, or even nearly all transmissions, to stop COVID-19!**
 
+**这就意味着：我们不需要切断所有的传播渠道，甚至大部分传播渠道，就可以遏制住新冠肺炎的传播！**
+
 It's a paradox. COVID-19 is extremely contagious, yet to contain it, we "only" need to stop more than 60% of infections. 60%?! If that was a school grade, that's a D-. But if R<sub>0</sub> = 2.5, cutting that by 61% gives us R = 0.975, which is R < 1, virus is contained! (exact formula:[^exact_formula])
+
+这是一个悖论。新冠肺炎具有极强的传染性，但要遏制住它，我们“只”需要阻止60%以上的易感者被传染。60%？！如果这是考试成绩，那就是刚及格。但是对于R<sub>0</sub> = 2.5，减少61%可以被传染的易感者，此时R = 0.975，也就是说R < 1，病毒被遏制住了！（详细的数学推导：[^exact_formula]）
 
 [^exact_formula]: Remember R = R<sub>0</sub> * the ratio of transmissions still allowed. Remember also that ratio of transmissions allowed = 1 - ratio of transmissions *stopped*.
     
@@ -288,17 +361,39 @@ It's a paradox. COVID-19 is extremely contagious, yet to contain it, we "only" n
     
     Therefore, you need to stop more than **1 - 1/R<sub>0</sub>** of transmissions to get R < 1 and contain the virus!
 
+记住R = R<sub>0</sub> * 易感者的比例。同时要记住易感者的比例 = 1 - 不会再被感染的人所占的比例。
+
+因此，要达到R < 1，你需要使得R<sub>0</sub> * 易感者的比例 < 1。
+
+也就是说，易感者的比例 < 1/R<sub>0</sub>。
+
+进一步得到，1 - 不会被感染的人所占的比例 < 1/R<sub>0</sub>。
+
+接着，不会被感染的人所占的比例 > 1 - 1/R<sub>0</sub>。
+
+最终得到，我们只需要保证**1 - 1/R<sub>0</sub>**比例的人不会被传染从而使得R < 1，病毒就被遏制住了！
+
 ![](pics/r4.png)
 
 (If you think R<sub>0</sub> or the other numbers in our simulations are too low/high, that's good you're challenging our assumptions! There'll be a "Sandbox Mode" at the end of this guide, where you can plug in your *own* numbers, and simulate what happens.)
 
+（如果你认为模拟动画中R<sub>0</sub>或者其他参数过低或者过高，你可以试着用自己预估的参数去模拟！在这篇文章的最后有一个“沙盒模式”，在那里你可以插入你自己设定的参数，从而模拟可能发生的情况。）
+
 *Every* COVID-19 intervention you've heard of – handwashing, social/physical distancing, lockdowns, self-isolation, contact tracing & quarantining, face masks, even "herd immunity" – they're *all* doing the same thing:
+
+所有你听说过的可以阻止新冠肺炎传播的手段——勤洗手、保持社交/物理距离、居家不外出、自我隔离、追踪密切接触者并进行隔离、戴口罩，甚至“群体免疫”，他们都在做同一件事：
 
 Getting R < 1.
 
+使R < 1。
+
 So now, let's use our "epidemic flight simulator" to figure this out: How can we get R < 1 in a way **that also protects our mental health *and* financial health?**
 
+因此现在，让我们用流行病“飞行模拟器”来搞清楚：我们如何在确保精神状态稳定、财产安全的前提下让R < 1？
+
 Brace yourselves for an emergency landing...
+
+为紧急着陆做好准备……
 
 <div class="section chapter">
     <div>
